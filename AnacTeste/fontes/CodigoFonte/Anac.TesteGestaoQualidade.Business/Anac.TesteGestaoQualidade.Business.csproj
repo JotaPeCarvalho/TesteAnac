@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProjectGuid>{D5FD75AC-D8BB-4C31-B9DC-918FA83E750B}</ProjectGuid>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugType Condition=" '$(Configuration)' == 'Release' ">None</DebugType>
+    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Corporativo.Business.Base" Version="1.0.4" />
+    <PackageReference Include="Corporativo.Infrastructure.IoC.Base" Version="2.0.0-2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Anac.TesteGestaoQualidade.Domain\Anac.TesteGestaoQualidade.Domain.csproj" />
+    <ProjectReference Include="..\Anac.TesteGestaoQualidade.Infrastructure\Anac.TesteGestaoQualidade.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Implementation\" />
+  </ItemGroup>
+
+</Project>

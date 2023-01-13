@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+		<IsPackable>false</IsPackable>
+		<SpaRoot>ClientApp\</SpaRoot>
+		<UserSecretsId>a06dc1a7-0dea-4b2a-a4fa-c066a5c007c6</UserSecretsId>
+		<DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Corporativo.WebApi.Base" Version="2.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Remove="$(SpaRoot)**" />
+		<None Remove="$(SpaRoot)**" />
+		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**;$(SpaRoot).eslintcache;$(SpaRoot).eslintignore;$(SpaRoot).editorconfig;$(SpaRoot).gitignore;$(SpaRoot)prettier.config.js;$(SpaRoot).eslintrc.json;$(SpaRoot)tsconfig.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Controllers\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Anac.TesteGestaoQualidade.Business\Anac.TesteGestaoQualidade.Business.csproj" />
+	</ItemGroup>
+
+	<Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+		<!-- Ensure Node.js is installed -->
+		<Exec Command="node --version" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+		</Exec>
+		<Error Condition="'$(ErrorCode)' != '0'" Text="Node.js é obrigatório para rodar esse projeto. Para continuar, porfavor instale o Node.js disponível em https://nodejs.org/, e então reinicie o visual studio ou sua IDE." />
+		<Message Importance="high" Text="Restaurando dependências usando 'yarn'. Isso pode levar alguns minutos..." />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="yarn install" />
+	</Target>
+
+	<Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+		<ItemGroup>
+			<DistFiles Include="$(SpaRoot)build\**" />
+			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+				<RelativePath>%(DistFiles.Identity)</RelativePath>
+				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			</ResolvedFileToPublish>
+		</ItemGroup>
+	</Target>
+
+</Project>

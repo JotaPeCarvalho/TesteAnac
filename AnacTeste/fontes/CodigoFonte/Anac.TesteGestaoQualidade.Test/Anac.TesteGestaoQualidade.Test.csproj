@@ -1,0 +1,32 @@
+ <Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+
+    <Configurations>Debug;Release;DebugApi</Configurations>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Business\**" />
+    <EmbeddedResource Remove="Business\**" />
+    <None Remove="Business\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
+    <PackageReference Include="Moq" Version="4.15.2" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="System.Data.Common" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Anac.TesteGestaoQualidade.Business\Anac.TesteGestaoQualidade.Business.csproj" />
+    <ProjectReference Include="..\Anac.TesteGestaoQualidade.Domain\Anac.TesteGestaoQualidade.Domain.csproj" />
+    <ProjectReference Include="..\Anac.TesteGestaoQualidade.Infrastructure\Anac.TesteGestaoQualidade.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

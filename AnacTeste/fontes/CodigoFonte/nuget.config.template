@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <packageSources>
+    <add key="public" value="https://api.nuget.org/v3/index.json" />
+    <add key="custom" value="https://nexus.anac.gov.br/nexus/repository/nuget-group/" />
+  </packageSources>
+  <packageSourceCredentials>
+    <custom>
+      <add key="Username" value="%NEXUS_USER_NAME%" />
+      <add key="ClearTextPassword" value="%NEXUS_USER_PASSWORD%" />
+    </custom>
+  </packageSourceCredentials>
+</configuration>
