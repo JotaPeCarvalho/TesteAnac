@@ -12,6 +12,8 @@ namespace Anac.TesteGestaoQualidade.Web
     {
         public static void Main(string[] args)
         {
+
+            //Testando funcionalidades do git 
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft", LogEventLevel.Information)
